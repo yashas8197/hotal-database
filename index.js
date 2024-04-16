@@ -131,4 +131,49 @@ async function getRestaurantByPhoneNumber(resPhoneNumber) {
     throw error;
   }
 }
-getRestaurantByPhoneNumber("+1299655890");
+// getRestaurantByPhoneNumber("+1299655890");
+
+async function updateHotalById(hotalId, dataToUpdate) {
+  try {
+    const updateHotalName = await Hotal.findByIdAndUpdate(
+      hotalId,
+      dataToUpdate,
+      { new: true },
+    );
+    console.log(updateHotalName);
+  } catch (error) {
+    throw error;
+  }
+}
+
+updateHotalById("661e584a101d9a66881b4836", { checkOutTime: "11:00 AM" });
+
+async function updateHotalData(hotalName, dataToUpdate) {
+  try {
+    const updateByHotalName = await Hotal.findOneAndUpdate(
+      { name: hotalName },
+      dataToUpdate,
+      { new: true },
+    );
+    console.log(updateByHotalName);
+  } catch (error) {
+    throw error;
+  }
+}
+
+// updateHotalData("Sunset Resort", { rating: 4.2 });
+
+async function updateHotalDataByPhoneNumber(hotalPhoneNumber, dataToUpdate) {
+  try {
+    const updateByHotalPhoneNumber = await Hotal.findOneAndUpdate(
+      { phoneNumber: hotalPhoneNumber },
+      dataToUpdate,
+      { new: true },
+    );
+    console.log(updateByHotalPhoneNumber);
+  } catch (error) {
+    throw error;
+  }
+}
+
+updateHotalDataByPhoneNumber("+1299655890", { phoneNumber: "+1997687392" });
