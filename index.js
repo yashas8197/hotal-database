@@ -146,7 +146,7 @@ async function updateHotalById(hotalId, dataToUpdate) {
   }
 }
 
-updateHotalById("661e584a101d9a66881b4836", { checkOutTime: "11:00 AM" });
+// updateHotalById("661e584a101d9a66881b4836", { checkOutTime: "11:00 AM" });
 
 async function updateHotalData(hotalName, dataToUpdate) {
   try {
@@ -176,4 +176,26 @@ async function updateHotalDataByPhoneNumber(hotalPhoneNumber, dataToUpdate) {
   }
 }
 
-updateHotalDataByPhoneNumber("+1299655890", { phoneNumber: "+1997687392" });
+// updateHotalDataByPhoneNumber("+1299655890", { phoneNumber: "+1997687392" });
+
+async function deleteHotelById(hotalId) {
+  try {
+    const deleteById = await Hotal.findByIdAndDelete(hotalId);
+  } catch (error) {
+    throw error;
+  }
+}
+
+deleteHotelById("661e0ee492a844af39073b6a");
+
+async function deleteHotelByPhoneNumber(hotalPhoneNumber) {
+  try {
+    const deleteByPhoneNumber = await Hotal.findOneAndDelete({
+      phoneNumber: hotalPhoneNumber,
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
+deleteHotelByPhoneNumber("+1234555890");
